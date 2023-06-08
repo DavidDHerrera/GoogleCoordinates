@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+         <add id="DavidDelgado_GoogleCoordinates::config_menu" title="Google Coordinates" module="DavidDelgado_GoogleCoordinates" sortOrder="50" resource="DavidDelgado_GoogleCoordinates::config_google_coordinates" />
+        <add id="DavidDelgado_GoogleCoordinates::config_sub_menu" title="Configuration" module="DavidDelgado_GoogleCoordinates" sortOrder="10" parent="DavidDelgado_GoogleCoordinates::config_menu" action="adminhtml/system_config/edit/section/google_coordinates" resource="DavidDelgado_GoogleCoordinates::config_google_coordinates" />
+    </menu>
+</config>

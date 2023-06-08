@@ -1,0 +1,21 @@
+
+
+<div id="custom-component" data-bind="scope: 'customComponent'">
+</div>
+
+
+<script type="text/x-magento-init">
+{
+    "#custom-component": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "customComponent": {
+                    "component": "DavidDelgado_GoogleCoordinates/js/google-coordinates",
+                    "apiKey": "<?= $block->escapeHtml($block->getApiKey()) ?>"
+                }
+            }
+        }
+    }
+}
+
+</script>

@@ -1,0 +1,46 @@
+<?php
+/** @var \DavidDelgado\GoogleCoordinates\Block\CoordinatesMSI $block */
+
+$coordinatesData = $block->getCoordinatesData();
+$jsData = [];
+
+if (!empty($coordinatesData)) {
+    foreach ($coordinatesData as $data) {
+        $sku = $data['sku'];
+        $latitude = $data['latitude'];
+        $longitude = $data['longitude'];
+
+        // Haz algo con los datos de coordenadas...
+        $jsData[] = [
+            'sku' => $sku,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+        ];
+    }
+} else {
+    $jsData = [];
+}
+
+// Convierte los datos a formato JSON
+$jsonData = json_encode($jsData);
+
+// Agrega los datos al archivo de configuración JS
+$block->addData([
+    'coordinatesData' => $jsData
+]);
+?>
+
+<script type="text/x-magento-init">
+{
+    "#custom-component": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "customComponent": {
+                    "component": "DavidDelgado_GoogleCoordinates/js/google-coordinates",
+                    "coordinatesData": <?= $jsonData ?? '[]' ?>
+                }
+            }
+        }
+    }
+}
+</script>
